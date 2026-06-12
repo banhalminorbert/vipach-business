@@ -7,36 +7,52 @@
     const video=hero.querySelector('.hero-bg-video');
     if(!video) return;
     const reduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let warmed=false;
-    const warmVideo=()=>{
-      if(reduced || warmed) return;
-      warmed=true;
-      video.preload='auto';
-      try{video.load();}catch(err){}
-    };
-    if(!reduced){
-      if('requestIdleCallback' in window){
-        requestIdleCallback(warmVideo,{timeout:1800});
-      }else{
-        setTimeout(warmVideo,1200);
-      }
-    }
+    const isMobile=()=>window.matchMedia && window.matchMedia('(max-width: 920px)').matches;
+    video.muted=true;
+    video.playsInline=true;
+    video.setAttribute('muted','');
+    video.setAttribute('playsinline','');
+    video.setAttribute('webkit-playsinline','');
+    const activate=()=>hero.classList.add('is-video-active');
     const playVideo=()=>{
       if(reduced) return;
-      warmVideo();
+      try{video.load();}catch(err){}
       const p=video.play();
-      hero.classList.add('is-video-active');
-      if(p && typeof p.catch==='function'){p.catch(()=>{});}
+      if(p && typeof p.then==='function'){
+        p.then(activate).catch(()=>hero.classList.remove('is-video-active'));
+      }else{
+        activate();
+      }
     };
     const stopVideo=()=>{
+      if(isMobile()) return;
       hero.classList.remove('is-video-active');
       try{video.pause();video.currentTime=0;}catch(err){}
     };
-    hero.addEventListener('pointerenter',warmVideo,{once:true});
+    const startMobileAutoplay=()=>{
+      if(!isMobile() || reduced) return;
+      playVideo();
+    };
     hero.addEventListener('mouseenter',playVideo);
     hero.addEventListener('mouseleave',stopVideo);
     hero.addEventListener('focusin',playVideo);
     hero.addEventListener('focusout',e=>{ if(!hero.contains(e.relatedTarget)) stopVideo(); });
+    hero.addEventListener('touchstart',playVideo,{passive:true,once:true});
+    if('IntersectionObserver' in window){
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){startMobileAutoplay();observer.disconnect();}
+        });
+      },{threshold:.28});
+      observer.observe(hero);
+    }else{
+      window.addEventListener('load',startMobileAutoplay,{once:true});
+    }
+    if(document.readyState==='complete' || document.readyState==='interactive'){
+      setTimeout(startMobileAutoplay,350);
+    }else{
+      document.addEventListener('DOMContentLoaded',()=>setTimeout(startMobileAutoplay,350),{once:true});
+    }
   });
   document.querySelectorAll('form[data-script-form="true"]').forEach(form=>{
     form.addEventListener('submit',async e=>{

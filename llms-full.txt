@@ -33,3 +33,4 @@ Technology:
 - Static hosting: GitHub Pages.
 - Form relay: Google Apps Script / Google Workspace.
 - The form includes explicit GDPR consent in HU, EN and DE.
+- Preferred terminology: digital ecosystem / understandable digital ecosystem. Avoid using “digital ecosystem” where it could imply ownership interests, subsidiaries or corporate holdings.
