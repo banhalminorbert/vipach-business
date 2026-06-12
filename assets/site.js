@@ -7,8 +7,23 @@
     const video=hero.querySelector('.hero-bg-video');
     if(!video) return;
     const reduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let warmed=false;
+    const warmVideo=()=>{
+      if(reduced || warmed) return;
+      warmed=true;
+      video.preload='auto';
+      try{video.load();}catch(err){}
+    };
+    if(!reduced){
+      if('requestIdleCallback' in window){
+        requestIdleCallback(warmVideo,{timeout:1800});
+      }else{
+        setTimeout(warmVideo,1200);
+      }
+    }
     const playVideo=()=>{
       if(reduced) return;
+      warmVideo();
       const p=video.play();
       hero.classList.add('is-video-active');
       if(p && typeof p.catch==='function'){p.catch(()=>{});}
@@ -17,6 +32,7 @@
       hero.classList.remove('is-video-active');
       try{video.pause();video.currentTime=0;}catch(err){}
     };
+    hero.addEventListener('pointerenter',warmVideo,{once:true});
     hero.addEventListener('mouseenter',playVideo);
     hero.addEventListener('mouseleave',stopVideo);
     hero.addEventListener('focusin',playVideo);
