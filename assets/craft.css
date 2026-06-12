@@ -892,3 +892,51 @@ textarea{
     line-height:1.7;
   }
 }
+
+/* Mobile hamburger menu readability and touch-target polish */
+@media(max-width:920px){
+  .mobile.open{
+    display:block;
+  }
+  .mobile .stack{
+    gap:0!important;
+    padding:10px 0 14px!important;
+    border-top:1px solid var(--line2);
+  }
+  .mobile .stack a{
+    display:flex;
+    align-items:center;
+    min-height:48px;
+    padding:12px 2px;
+    font-size:17px!important;
+    line-height:1.25!important;
+    font-weight:520!important;
+    letter-spacing:-.018em;
+    color:var(--ink)!important;
+    border-bottom:1px solid rgba(210,210,215,.48);
+  }
+  .mobile .stack a:last-child{
+    border-bottom:0;
+  }
+  .mobile .stack a:hover{
+    color:var(--blue)!important;
+  }
+}
+@media(max-width:380px){
+  .mobile .stack a{
+    min-height:46px;
+    font-size:16px!important;
+  }
+}
+
+/* Footer premium copy refinement */
+.footer-premium-copy .footer-eyebrow{
+  color:var(--muted);
+}
+.footer-premium-copy h2{
+  max-width:760px;
+}
+.footer-premium-copy p:last-child{
+  max-width:780px;
+  color:var(--muted);
+}
