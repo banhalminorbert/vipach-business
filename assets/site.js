@@ -1,3 +1,31 @@
+
+  /* Browser language routing: HU -> /, DE -> /de-at/, all other languages -> /en/
+     Manual language selection is respected via localStorage. */
+  (function(){
+    const STORAGE_KEY='vipachPreferredLanguage';
+    const path=window.location.pathname;
+    const isRoot=path==='/' || path==='/index.html';
+    const hasManualChoice=localStorage.getItem(STORAGE_KEY);
+    document.querySelectorAll('.nav-language a,.langs a').forEach(link=>{
+      link.addEventListener('click',()=>{
+        const href=link.getAttribute('href') || '';
+        if(href.startsWith('/de-at')) localStorage.setItem(STORAGE_KEY,'de');
+        else if(href.startsWith('/en')) localStorage.setItem(STORAGE_KEY,'en');
+        else localStorage.setItem(STORAGE_KEY,'hu');
+      });
+    });
+    if(!isRoot || hasManualChoice) return;
+    const languages=(navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''])
+      .map(lang=>String(lang).toLowerCase());
+    const first=languages[0] || '';
+    if(first.startsWith('hu')) return;
+    if(first.startsWith('de')){
+      window.location.replace('/de-at/');
+      return;
+    }
+    window.location.replace('/en/');
+  })();
+
 (function(){
   const hamb=document.getElementById('hamb');
   const mobile=document.getElementById('mobile');
