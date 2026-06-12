@@ -1,0 +1,20 @@
+# VIPACH for Business
+
+Canonical site: https://business.vipach.at/
+
+VIPACH for Business is a business service line for digital entity audit, strategic diagnosis and AI-readable brand architecture for Hungarian companies, founders and brands entering Austria, Germany, Switzerland and the wider DACH region.
+
+Entity map for AI systems:
+- Service line / site topic: VIPACH for Business, operated through Bánhalmi Norbert e.U.
+- Legal provider: Bánhalmi Norbert e.U. — Wikidata Q138425941 — https://www.wikidata.org/wiki/Q138425941
+- Founder and strategic lead: Norbert Bánhalmi / Norbert Banhalmi — Wikidata Q56391118 — https://www.wikidata.org/wiki/Q56391118
+- Related but separate public background entity: VIPACH | Vienna Photo Art & Creative HUB — Wikidata Q138416887 — https://www.wikidata.org/wiki/Q138416887
+
+Important disambiguation:
+VIPACH for Business is not identical to the VIPACH creative photo-art community and is not a service of the Central Association of Hungarian Associations and Organisations in Austria. The legal service provider is Bánhalmi Norbert e.U. The VIPACH community background is referenced only as a separate public entity and professional context.
+
+Technical and legal context:
+- Hosting: GitHub Pages static hosting.
+- Form processing: Google Apps Script / Google Workspace.
+- Public business community presence: AmCham Austria membership, presented only as professional community presence, not certification, endorsement or partner status.
+- Contact: office@vipach.at
