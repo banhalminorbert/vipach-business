@@ -51,3 +51,15 @@
 @media(max-width:1100px){.source-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-apple-layout .about-grid{grid-template-columns:1fr 1.1fr}}
 @media(max-width:920px){.about-page-section{padding-top:72px}.about-apple-layout .about-grid{grid-template-columns:1fr}.about-apple-layout .apple-portrait{max-width:520px;margin:0 auto}.source-card-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.about-page-section{padding-top:58px}.about-apple-layout .apple-portrait{border-radius:28px;padding:12px}.about-apple-layout .apple-portrait picture,.about-apple-layout .apple-portrait img{border-radius:22px}.source-card-grid{grid-template-columns:1fr}.source-card-link{min-height:auto}.footer-accordion summary{padding:16px 18px}.footer-accordion-body{padding:16px 18px 18px}}
+
+/* Source background card layout fix — prevents pill overflow and keeps titles/read-more inside cards */
+.source-card-section{margin-top:42px;border-top:1px solid var(--line2);padding-top:30px}
+.source-card-section h3{margin:0 0 18px;font-size:20px;line-height:1.2;letter-spacing:-.03em;color:var(--ink);font-weight:720}
+.source-card-section .source-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.source-card-section .source-card-link{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:space-between!important;gap:14px!important;width:100%;min-width:0;min-height:208px;padding:24px 24px 22px!important;border:1px solid var(--line2)!important;border-radius:28px!important;background:linear-gradient(180deg,#fff 0%,#fbfbfd 100%);text-decoration:none!important;color:var(--ink)!important;box-shadow:0 14px 46px rgba(0,0,0,.045);overflow:hidden;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.source-card-section .source-card-link:hover{transform:translateY(-2px);border-color:rgba(0,102,204,.28)!important;box-shadow:0 20px 58px rgba(0,0,0,.075)}
+.source-card-section .source-card-link strong{display:block;max-width:100%;font-size:18px;line-height:1.13;letter-spacing:-.035em;color:var(--ink);font-weight:720;overflow-wrap:anywhere;word-break:normal;hyphens:auto}
+.source-card-section .source-desc{display:block;flex:1;font-size:14px;line-height:1.48;color:var(--muted);letter-spacing:-.01em;overflow-wrap:break-word}
+.source-card-section .source-more{align-self:flex-start;display:inline-flex!important;gap:6px;align-items:center;margin-top:auto;font-size:14px;line-height:1.1;font-weight:700;color:var(--blue);white-space:nowrap}
+@media(max-width:1180px){.source-card-section .source-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.source-card-section{margin-top:34px;padding-top:24px}.source-card-section .source-card-grid{grid-template-columns:1fr;gap:12px}.source-card-section .source-card-link{min-height:auto;padding:22px!important;border-radius:24px!important}.source-card-section .source-card-link strong{font-size:17px}.source-card-section .source-desc{font-size:14px}}
