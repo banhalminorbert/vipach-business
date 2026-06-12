@@ -16,5 +16,5 @@ VIPACH for Business is not identical to the VIPACH creative photo-art community 
 Technical and legal context:
 - Hosting: GitHub Pages static hosting.
 - Form processing: Google Apps Script / Google Workspace.
-- Public business community presence: AmCham Austria membership, presented only as professional community presence, not certification, endorsement or partner status.
+- Verified business community membership: official AmCham Austria membership, presented as professional membership, not certification, endorsement or partner status.
 - Contact: office@vipach.at

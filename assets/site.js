@@ -2,6 +2,26 @@
   const hamb=document.getElementById('hamb');
   const mobile=document.getElementById('mobile');
   if(hamb&&mobile){hamb.addEventListener('click',()=>{const open=mobile.classList.toggle('open');hamb.setAttribute('aria-expanded',String(open));});mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');hamb.setAttribute('aria-expanded','false');}));}
+
+  document.querySelectorAll('.hero-media').forEach(hero=>{
+    const video=hero.querySelector('.hero-bg-video');
+    if(!video) return;
+    const reduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const playVideo=()=>{
+      if(reduced) return;
+      const p=video.play();
+      hero.classList.add('is-video-active');
+      if(p && typeof p.catch==='function'){p.catch(()=>{});}
+    };
+    const stopVideo=()=>{
+      hero.classList.remove('is-video-active');
+      try{video.pause();video.currentTime=0;}catch(err){}
+    };
+    hero.addEventListener('mouseenter',playVideo);
+    hero.addEventListener('mouseleave',stopVideo);
+    hero.addEventListener('focusin',playVideo);
+    hero.addEventListener('focusout',e=>{ if(!hero.contains(e.relatedTarget)) stopVideo(); });
+  });
   document.querySelectorAll('form[data-script-form="true"]').forEach(form=>{
     form.addEventListener('submit',async e=>{
       e.preventDefault();
